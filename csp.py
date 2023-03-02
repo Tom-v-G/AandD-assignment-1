@@ -126,13 +126,13 @@ class CSP:
         location = empty_locations[0]
         new_empty_locations = empty_locations[1:]
 
+        #best_grid = None
+
         for guess in self.numbers:
             # deepcopy
             copy_CSP = CSP(self.grid, self.numbers, self.groups, self.constraints)
+            copy_CSP.fill_cell_to_groups()
             copy_CSP.grid[location[0]][location[1]] = guess #fill in guess
-
-            print(f'{guess} filled in in ({location[0]}, {location[1]}):')
-            print(copy_CSP.grid)
 
             new_grid = copy_CSP.search(new_empty_locations)
 
